@@ -1,4 +1,6 @@
 BankAtm::Application.routes.draw do
+  root 'sessions#new'
+
   get "accounts/show"
   post "accounts/withdraw"
   # get "sessions/create"
