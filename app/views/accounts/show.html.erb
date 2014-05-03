@@ -1,0 +1,10 @@
+<h1>Account Details</h1>
+<p>Card Number: <%= @response.parsed_response['card_number'] %></p>
+<p>Balance: <%= @response.parsed_response['balance_dollars'] %></p>
+
+<%= form_tag '/accounts/withdraw', method: 'post' do |f| %>
+  Withdraw: <%= text_field :accounts, :amount %>
+  <%= submit_tag 'Go' %>
+<% end %>
+
+<%= link_to 'Log out', session_path(session[:token]), method: 'DELETE' %>

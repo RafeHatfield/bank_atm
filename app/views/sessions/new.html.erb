@@ -1,0 +1,5 @@
+<%= form_tag '/sessions', method: 'post' do |f| %>
+  Card: <%= text_field :account, :card_number %>
+  Pin: <%= text_field :account, :pin %>
+  <button type="submit">Go</button>
+<% end %>
