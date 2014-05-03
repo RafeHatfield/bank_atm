@@ -13,4 +13,9 @@ To run the app
 
  * rake db:create
  * rake db:migrate
+ * rake db:seed
  * rails s -p 3030
+
+Once this is done, you can log in with Card: 1 Pin: 1111
+
+Note: rake db:seed is not the correct way to put dummy data into the system, it should be done with a rake task, done for speed only.
