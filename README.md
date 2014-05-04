@@ -15,6 +15,7 @@ To run the app
  * rake db:migrate
  * rake db:seed
  * rails s -p 3030
+ * http://localhost:3030/
 
 Once this is done, you can log in with Card: 1 Pin: 1111
 
