@@ -1,10 +1,8 @@
 BankAtm::Application.routes.draw do
   root 'sessions#new'
 
-  get "accounts/show"
-  post "accounts/withdraw"
-  # get "sessions/create"
-  # get 'sessions/new'
+  get 'accounts/show'
+  post 'accounts/withdraw'
 
   resources :sessions, only: [:new, :create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.

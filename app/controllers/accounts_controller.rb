@@ -1,7 +1,8 @@
 class AccountsController < ApplicationController
+  before_filter :set_header_info
+
   def show
-    header_info = { 'token' => session[:token] }
-    @response = HTTParty.get("#{ENV['API_URL']}accounts/show", headers: header_info)
+    @response = HTTParty.get("#{ENV['API_URL']}accounts/show", headers: @header_info)
 
     if @response.code == 401
       flash[:error] = 'Invalid Token'
@@ -10,9 +11,8 @@ class AccountsController < ApplicationController
   end
 
   def withdraw
-    header_info = { 'token' => session[:token] }
-    # byebug
-    response = HTTParty.put("#{ENV['API_URL']}accounts/withdraw/#{params[:accounts][:amount]}", headers: header_info)
+    response = HTTParty.put("#{ENV['API_URL']}accounts/withdraw/#{params[:accounts][:amount]}", headers: @header_info)
+
     if response.code == 200
       flash[:success] = 'Transaction successful'
     elsif response.code == 401
@@ -22,5 +22,11 @@ class AccountsController < ApplicationController
       flash[:error] = response.parsed_response['transaction_status']
     end
     redirect_to '/accounts/show'
+  end
+
+  private
+
+  def set_header_info
+    @header_info = { 'token' => session[:token] }
   end
 end
